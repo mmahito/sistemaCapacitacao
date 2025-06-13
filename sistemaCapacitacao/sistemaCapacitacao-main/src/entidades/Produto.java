@@ -1,52 +1,66 @@
-package entidades;
+package aplicacao;
 
-public class Produto {
+import entidades.ServidorPublico;
+import entidades.Produto;
+import entidades.Employee;
+import java.util.Scanner;
 
-    private String nome;
-    private double preco;
-    private int quantidade;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+public class Programa {
+    public Programa() {
     }
 
-    public double getPreco() {
-        return preco;
-    }
+    public static void main(String[] args) {
+////        ServidorPublico isabela = new ServidorPublico();
+////        isabela.setNome("Isabela");
+////        isabela.setCargo("Auditor");
+////        isabela.setOrgao("ANVISA");
+////        isabela.setLotacao("Brasilia");
+////        isabela.setEmail("isabela@gmail.");
+////
+////        ServidorPublico João = new ServidorPublico();
+////        ServidorPublico maria = new ServidorPublico(123, "Maria");
+////            System.out.println(maria.getNome());
+////
+////        ServidorPublico jose= new ServidorPublico(134, "José,", "Auditor");
+////            System.out.println(jose.getNome());
+////            System.out.println(jose.getCargo());
+////
+////        System.out.println("Servidor: "+ isabela.getNome());
+////
+////        isabela.calcularSalarioHorasExtras(10, 5);
+////        System.out.println("Servidor "+ isabela.getNome());
+////        System.out.printf("Horas extras R$ %.2f: ",isabela.getHorasExtras());
+////        System.out.println("Salário total : " +isabela.calcularSalarioTotal(1512));
+//        String nome;
+//        int qntd;
+//        double preco;
+//        Scanner leia = new Scanner(System.in);
+//        System.out.println("Nome do produto: ");
+//        nome = leia.nextLine();
+//        System.out.println("Quantidade: ");
+//        qntd = leia.nextInt();
+//        System.out.println("O preço é: ");
+//        preco = leia.nextDouble();
+//        Produto produto = new Produto(nome, preco, qntd);
+//
+        String nome;
+        double salarioB;
+        double tax;
+        Scanner leia = new Scanner(System.in);
+        System.out.println("Nome do funcionário: ");
+        nome = leia.nextLine();
+        System.out.println("Seu salário bruto é: ");
+        salarioB = leia.nextDouble();
+        System.out.println("Seus impostos são de: ");
+        tax = leia.nextDouble();
+        Employee funcionario = new Employee();
+        funcionario.setName(nome);
+        funcionario.setGrossSalary(salarioB);
+        funcionario.setTax(tax);
+        System.out.println("Funcionário: "+funcionario.getName()+", "+funcionario.netSalary());
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public int getQuatidade() {
-        return quantidade;
-    }
-
-    public void setQuatidade(int quatidade) {
-        this.quantidade = quatidade;
-    }
-    public double TotalValueInStock(){
-        double total = getQuatidade() * getPreco();
-        return (total);
-    }
-    public void AddProducts(int quantidade){
-        this.quantidade += quantidade;
-        mostrarInformacao();
-    }
-    public void RemoveProducts(int quantidade){
-        this.quantidade -= quantidade;
-        mostrarInformacao();
-    }
-    public void mostrarInformacao(){
-        System.out.println("Nome: "+ getNome()+ "Preço: "+ getPreco()+ "Quantidade: "+ getQuatidade()+ "Total"+ TotalValueInStock());
-    }
-    public Produto(String nome, double preco, int quantidade){
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.nome = nome;
+        System.out.println();
+        System.out.println("Quantos porcentos adicionados ao salário: ");
+        funcionario.increaseSalary(leia.nextDouble());
     }
 }
